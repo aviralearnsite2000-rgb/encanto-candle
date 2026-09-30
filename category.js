@@ -1,1 +1,1 @@
-PLACEHOLDER_CATEGORY_JS_V2
+placeholder v2 - gallery coming next
