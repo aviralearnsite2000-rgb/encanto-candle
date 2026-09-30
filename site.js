@@ -1,10 +1,10 @@
 /* Home page - render title, photographic cards, theme from store.json */
 (function () {
-  var BTN = "BTN-TXT";
-  var UNIT = "UNIT-TXT";
-  var D1 = "D1";
-  var D2 = "D2";
-  var FADIG = "0123456789";
+  var BTN = "← دیدن محصولات";
+  var UNIT = "محصول 🕯️";
+  var D1 = "🌿";
+  var D2 = "🤍";
+  var FADIG = "۰۱۲۳۴۵۶۷۸۹";
   function faNum(n) {
     return String(n).replace(/[0-9]/g, function (d) { return FADIG[+d]; });
   }
