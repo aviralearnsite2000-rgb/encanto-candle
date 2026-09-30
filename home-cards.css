@@ -1,1 +1,47 @@
-.cards{grid-template-columns:repeat(auto-fit,minmax(200px,1fr));}.card{position:relative;isolation:isolate;overflow:hidden;justify-content:flex-end;text-align:center;padding:24px 18px 26px;min-height:clamp(240px,36vh,340px);border-radius:28px;background:linear-gradient(135deg,var(--pink-100),var(--pink-300));}.card-bg{position:absolute;inset:0;z-index:-2;}.card-bg img{width:100%;height:100%;object-fit:cover;}.card-veil{position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(255,246,249,0) 26%,rgba(255,246,249,.42) 52%,rgba(255,240,245,.93) 76%,rgba(255,227,238,.98) 100%);}.card-count{position:absolute;top:12px;inset-inline-start:12px;z-index:1;background:rgba(255,255,255,.78);color:var(--rose-deep);font-size:.74rem;font-weight:700;padding:3px 13px;border-radius:999px;}.card-txt{position:relative;}.card h2{font-size:1.9rem;line-height:1.5;color:var(--plum);text-shadow:-1px -1px 0 #fff,1px -1px 0 #fff,-1px 1px 0 #fff,1px 1px 0 #fff,0 0 16px #fff,0 0 30px #fff;}.card p{font-size:.9rem;color:var(--plum);min-height:0;text-shadow:0 0 12px #fff,0 0 22px #fff;}.card .btn{position:relative;margin-top:10px;}.card:nth-child(4){animation-delay:.36s;}.card:nth-child(5){animation-delay:.48s;}body.home .card{min-height:clamp(190px,29vh,290px);padding:16px 14px 18px;}body.home .card h2{font-size:clamp(1.25rem,2.9vh,1.75rem);}body.home .card p{font-size:clamp(.76rem,1.8vh,.88rem);line-height:1.75;}body.home .card .btn{padding:7px 24px;font-size:.84rem;}@media (max-width:760px){.cards{grid-template-columns:1fr;max-width:430px;margin:0 auto;}body.home{overflow-y:auto;}}
+/* Encanto photographic cards - big image, text + button overlaid, white halo */
+.cards .card{
+  position:relative;
+  overflow:hidden;
+  padding:0;
+  min-height:0;
+  border:1.5px solid rgba(255,255,255,.95);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:flex-end;
+  text-align:center;
+}
+.card-bg{position:absolute;inset:0;z-index:0}
+.card-bg img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s cubic-bezier(.16,.84,.44,1)}
+.card:hover .card-bg img{transform:scale(1.06)}
+.card-veil{
+  position:absolute;inset:0;z-index:1;
+  background:linear-gradient(180deg,rgba(255,246,249,.05) 0%,rgba(110,43,71,.08) 38%,rgba(110,43,71,.55) 72%,rgba(110,43,71,.78) 100%);
+}
+.card-count{
+  position:absolute;top:10px;inset-inline-start:10px;z-index:2;
+  background:rgba(255,255,255,.82);
+  border:1px solid rgba(255,255,255,.95);
+  color:var(--rose-deep);
+  font-size:.72rem;font-weight:900;
+  padding:3px 12px;border-radius:999px;
+  box-shadow:0 6px 16px rgba(176,74,120,.18);
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  white-space:nowrap;
+}
+.card .deco{position:absolute;z-index:2;opacity:.9;pointer-events:none;font-size:1.15rem}
+.deco.tl{top:38px;inset-inline-start:10px}
+.deco.br{bottom:86px;inset-inline-end:10px}
+.card-txt{position:relative;z-index:2;padding:0 12px;width:100%}
+.cards .card h2{
+  font-family:var(--font-display);
+  color:#fff;
+  line-height:1.6;
+}
+.cards .card p{
+  color:#fff;
+  line-height:1.9;
+}
+.cards .card .btn{position:relative;z-index:2;margin:8px 0 12px;white-space:nowrap}
