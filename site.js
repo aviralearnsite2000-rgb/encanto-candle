@@ -1,9 +1,9 @@
-/* Home page - render title, photographic cards, theme from store.json (ASCII-safe) */
+/* Home page - render title, photographic cards, theme from store.json */
 (function () {
-  var BTN = "~~BTN~~";
-  var UNIT = "~~UNIT~~";
-  var D1 = "~~D1~~";
-  var D2 = "~~D2~~";
+  var BTN = "BTN-TXT";
+  var UNIT = "UNIT-TXT";
+  var D1 = "D1";
+  var D2 = "D2";
   function faNum(n) {
     return String(n).replace(/[0-9]/g, function (d) { return "0123456789"[+d]; });
   }
@@ -25,26 +25,6 @@
     var el = document.getElementById(id);
     if (el && v) el.textContent = v;
   }
-  function fillFa() {
-    try {
-      document.title = "TT1-FINAL";
-      var nav = document.querySelectorAll(".nav-links a");
-      if (nav[0]) nav[0].textContent = "L1x";
-      if (nav[1]) nav[1].textContent = "L2x";
-      if (nav[2]) nav[2].textContent = "L3x";
-      if (nav[3]) nav[3].textContent = "L4x";
-      var h2 = document.querySelector(".hero2 h2");
-      if (h2) h2.innerHTML = "H1<br />H2";
-      var cta = document.querySelector(".btn-arrow");
-      if (cta) cta.textContent = "B2";
-      var cards = document.querySelectorAll("#cards .card");
-      for (var k = 0; k < cards.length; k++) {
-        var btn = cards[k].querySelector(".btn");
-        if (btn) btn.textContent = "BTN";
-      }
-    } catch (e) {}
-  }
-  fillFa();
   Encanto.loadStore().then(function (store) {
     var site = store.site || {};
     Encanto.applyTheme(site);
@@ -61,6 +41,5 @@
       wrap.classList.add("grid5");
       wrap.innerHTML = cats.map(card).join("");
     }
-    fillFa();
   }).catch(function () {});
 })();
