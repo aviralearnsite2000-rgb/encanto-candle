@@ -35,18 +35,18 @@ body.home .wrap{
 .hero2 .sub{color:var(--plum-soft);margin:2px 0 8px;font-size:.9rem}
 .hero2 .himg img{width:100%;height:clamp(140px,22vh,215px);object-fit:cover;border-radius:22px;box-shadow:var(--shadow);border:1.5px solid rgba(255,255,255,.9)}
 .btn-arrow{display:inline-flex;align-items:center;gap:8px}
-.cards.grid4{display:grid !important;grid-template-columns:repeat(4,1fr) !important;gap:14px !important;padding:0 !important;max-width:none !important;flex:1 1 0;min-height:0}
-.cards.grid4 .card{min-height:0;height:100%}
+.cards.grid4{display:grid !important;grid-template-columns:repeat(4,1fr) !important;gap:14px !important;padding:0 !important;max-width:none !important;flex:1 1 0;min-height:0;overflow:hidden !important}
+.cards.grid4 .card{min-height:0;height:100%;overflow:hidden}
 body.home .cards.grid4 .card h2{line-height:1.5}
 body.home .cards.grid4 .card p{line-height:1.8;min-height:0}
 body.home .cards.grid4 .card .btn{margin-top:6px;padding:7px 20px;font-size:.8rem}
 .lower{display:grid;grid-template-columns:1fr 2.9fr;gap:14px;align-items:stretch;flex:0 0 auto}
 .cards.single{display:flex !important;padding:0 !important;max-width:none !important}
-.cards.single .card{flex:1;min-height:0;height:clamp(150px,19vh,185px);width:100%}
+.cards.single .card{flex:1;min-height:0;height:clamp(150px,19vh,185px);width:100%;overflow:hidden}
 body.home .cards.single .card h2{font-size:1.1rem}
 body.home .cards.single .card p{font-size:.68rem}
 body.home .cards.single .card .btn{padding:6px 18px;font-size:.78rem}
-.features{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;align-self:stretch;align-items:center;padding:8px 6px;background:rgba(255,255,255,.45);border:1.5px solid rgba(255,255,255,.8);border-radius:20px;backdrop-filter:blur(10px)}
+.features{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;align-self:stretch;align-items:center;padding:8px 6px;background:transparent;border:none;backdrop-filter:none}
 .feat{text-align:center;padding:2px;position:relative}
 .feat + .feat::before{content:"";position:absolute;inset-inline-start:0;top:18%;height:64%;width:1.5px;background:var(--pink-300);opacity:.6}
 .feat .ic{font-size:1.15rem;width:40px;height:40px;margin:0 auto 2px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.75);border:1.5px solid var(--pink-200);box-shadow:0 6px 14px rgba(176,74,120,.14)}
@@ -64,13 +64,18 @@ body.home .cards.single .card .btn{padding:6px 18px;font-size:.78rem}
 .bottomnav{display:none}
 @media (max-width:760px){
   body.home{overflow-y:auto !important;height:auto;min-height:100vh;min-height:100dvh}
-  body.home .wrap{height:auto;max-height:none;justify-content:flex-start;border-radius:22px;margin:10px auto;width:calc(100% - 20px)}
-  .topnav .nav-links,.topnav .nav-acts{display:none}
+  body.home .wrap{height:auto;max-height:none;justify-content:flex-start;border-radius:22px;margin:10px auto;width:calc(100% - 20px);overflow:visible}
+  .topnav{justify-content:space-between}
+  .topnav .nav-links{display:none}
+  .topnav .nav-acts{display:flex}
+  .topnav .nav-acts .iconbtn:first-child{display:none}
   .burger{display:flex}
+  .brandlogo{position:absolute;left:50%;transform:translateX(-50%)}
   .brandlogo img{width:42px;height:42px}
   .hero2{grid-template-columns:1fr;padding-top:8px}
+  .hero2 .himg{order:-1}
   .hero2 .himg img{height:210px}
-  .cards.grid4{grid-template-columns:1fr !important;max-width:430px;margin:0 auto !important}
+  .cards.grid4{grid-template-columns:1fr !important;max-width:430px;margin:0 auto !important;overflow:visible !important}
   .cards.grid4 .card{min-height:270px}
   .lower{grid-template-columns:1fr;max-width:430px;margin:0 auto;width:100%}
   .cards.single .card{min-height:270px;height:auto}
