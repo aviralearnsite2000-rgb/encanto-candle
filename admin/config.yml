@@ -7,60 +7,65 @@ backend:
   auth_endpoint: auth
 
 locale: fa
-media_folder: "images/uploads"
-public_folder: "/images/uploads"
+media_folder: "photos"
+public_folder: "/photos"
 
 collections:
   - name: "settings"
-    label: "⚙️ تنظیمات سایت و رنگ‌ها"
+    label: "site settings"
     files:
-      - label: "تنظیمات کلی"
+      - label: "general"
         name: "site"
         file: "data/store.json"
         fields:
-          - { label: "نام برند (فارسی)", name: "site.brandFa", widget: "string", default: "انکنتو" }
-          - { label: "نام برند (انگلیسی)", name: "site.brandEn", widget: "string", default: "ENCANTO CANDLE" }
-          - { label: "جمله زیر عنوان", name: "site.tagline", widget: "string", required: false }
-          - { label: "متن پاورقی", name: "site.footer", widget: "string", required: false }
-          - { label: "لینک اینستاگرام", name: "site.instagram", widget: "string", default: "https://instagram.com/encanto._candle" }
-          - { label: "عکس پس‌زمینه صفحه اصلی", name: "site.bgImage", widget: "image", required: false, allow_multiple: false }
-          - label: "🎨 رنگ‌های تم"
+          - { label: "brandFa", name: "site.brandFa", widget: "string", default: "brand" }
+          - { label: "brandEn", name: "site.brandEn", widget: "string", default: "ENCANTO CANDLE" }
+          - { label: "tagline", name: "site.tagline", widget: "string", required: false }
+          - { label: "footer", name: "site.footer", widget: "string", required: false }
+          - { label: "instagram", name: "site.instagram", widget: "string", default: "https://instagram.com/encanto._candle" }
+          - { label: "bgImage", name: "site.bgImage", widget: "image", required: false, allow_multiple: false }
+          - label: "theme"
             name: "site.theme"
             widget: "object"
             fields:
-              - { label: "پس‌زمینه", name: "bg", widget: "color", default: "#fff6f9" }
-              - { label: "صورتی روشن", name: "pinkLight", widget: "color", default: "#ffe3ee" }
-              - { label: "صورتی", name: "pink", widget: "color", default: "#f9aecb" }
-              - { label: "رز", name: "rose", widget: "color", default: "#d96a9b" }
-              - { label: "رز تیره", name: "roseDeep", widget: "color", default: "#b04a78" }
-              - { label: "آلو (متن اصلی)", name: "plum", widget: "color", default: "#6e2b47" }
-              - { label: "آلو روشن (متن فرعی)", name: "plumSoft", widget: "color", default: "#96607c" }
+              - { label: "bg", name: "bg", widget: "color", default: "#fff6f9" }
+              - { label: "pinkLight", name: "pinkLight", widget: "color", default: "#ffe3ee" }
+              - { label: "pink", name: "pink", widget: "color", default: "#f9aecb" }
+              - { label: "rose", name: "rose", widget: "color", default: "#d96a9b" }
+              - { label: "roseDeep", name: "roseDeep", widget: "color", default: "#b04a78" }
+              - { label: "plum", name: "plum", widget: "color", default: "#6e2b47" }
+              - { label: "plumSoft", name: "plumSoft", widget: "color", default: "#96607c" }
 
   - name: "categories"
-    label: "📦 دسته‌بندی‌ها و محصولات"
+    label: "categories and products"
     files:
-      - label: "دسته‌بندی‌ها"
+      - label: "categories"
         name: "cats"
         file: "data/store.json"
         fields:
-          - label: "دسته‌بندی‌ها"
+          - label: "categories"
             name: "categories"
             widget: "list"
             summary: "{{fields.title}}"
             fields:
-              - { label: "نام دسته", name: "title", widget: "string" }
-              - { label: "نام انگلیسی (slug) — بدون فاصله", name: "slug", widget: "string", hint: "مثلاً: flower-basket" }
-              - { label: "توضیح دسته", name: "desc", widget: "text", required: false }
-              - { label: "ایموجی دسته (اگر عکس ندارد)", name: "icon", widget: "string", required: false, default: "🕯️" }
-              - { label: "عکس دسته", name: "image", widget: "image", required: false, allow_multiple: false }
-              - label: "محصولات این دسته"
+              - { label: "title", name: "title", widget: "string" }
+              - { label: "slug", name: "slug", widget: "string", hint: "latin, no space. ex: flower-basket" }
+              - { label: "desc", name: "desc", widget: "text", required: false }
+              - { label: "icon", name: "icon", widget: "string", required: false, default: "icon" }
+              - { label: "image", name: "image", widget: "image", required: false, allow_multiple: false }
+              - label: "items"
                 name: "items"
                 widget: "list"
                 required: false
                 summary: "{{fields.name}} — {{fields.price}}"
                 fields:
-                  - { label: "نام محصول", name: "name", widget: "string" }
-                  - { label: "توضیح", name: "desc", widget: "text", required: false }
-                  - { label: "قیمت", name: "price", widget: "string", hint: "مثلاً: ۸۵۰٬۰۰۰ تومان" }
-                  - { label: "ایموجی (اگر عکس ندارد)", name: "icon", widget: "string", required: false, default: "🕯️" }
-                  - { label: "عکس محصول", name: "image", widget: "image", required: false, allow_multiple: false }
+                  - { label: "name", name: "name", widget: "string" }
+                  - { label: "desc", name: "desc", widget: "text", required: false }
+                  - { label: "price", name: "price", widget: "string" }
+                  - { label: "icon", name: "icon", widget: "string", required: false, default: "icon" }
+                  - { label: "image", name: "image", widget: "image", required: false, allow_multiple: false }
+                  - label: "gallery images"
+                    name: "images"
+                    widget: "list"
+                    required: false
+                    field: { label: "photo", name: "photo", widget: "image" }
