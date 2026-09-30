@@ -21,17 +21,32 @@
       '<div class="card-txt"><h2>' + Encanto.esc(c.title) + "</h2><p>" + Encanto.esc(c.desc) + "</p></div>" +
       '<span class="btn">' + BTN + "</span></a>";
   }
-  function setText(id, value) {
+  function T(id, v) {
     var el = document.getElementById(id);
-    if (el && value) el.textContent = value;
+    if (el && v) el.textContent = v;
   }
+  function fillFa() {
+    try {
+      var nav = document.querySelectorAll(".nav-links a");
+      if (nav[0]) nav[0].textContent = "خانه";
+      if (nav[1]) nav[1].textContent = "محصولات";
+      if (nav[2]) nav[2].textContent = "درباره ما";
+      if (nav[3]) nav[3].textContent = "تماس با ما";
+      var h2 = document.querySelector(".hero2 h2");
+      if (h2) h2.innerHTML = "H1<br />H2";
+      var cta = document.querySelector(".btn-arrow");
+      if (cta) cta.textContent = "B2";
+      document.title = "TT1";
+    } catch (e) {}
+  }
+  fillFa();
   Encanto.loadStore().then(function (store) {
     var site = store.site || {};
     Encanto.applyTheme(site);
     Encanto.applyLinks(site);
-    setText("brandFa", site.brandFa);
-    setText("brandEn", site.brandEn);
-    setText("tagline", site.tagline);
+    T("brandFa", site.brandFa);
+    T("brandEn", site.brandEn);
+    T("tagline", site.tagline);
     if (site.brandFa) {
       document.title = site.brandFa + " | " + (site.brandEn || "");
     }
@@ -41,5 +56,6 @@
       wrap.classList.add("grid5");
       wrap.innerHTML = cats.map(card).join("");
     }
+    fillFa();
   }).catch(function () {});
 })();
