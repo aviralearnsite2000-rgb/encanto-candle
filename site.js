@@ -1,4 +1,4 @@
-/* Home page — render title, photographic cards, theme from store.json */
+/* Home page — render title, photographic cards, theme from store.json (ASCII-safe) */
 (function () {
   var BTN = "BTN-TXT";
   var UNIT = "UNIT-TXT";
@@ -33,6 +33,15 @@
       if (nav[1]) nav[1].textContent = "L2x";
       if (nav[2]) nav[2].textContent = "L3x";
       if (nav[3]) nav[3].textContent = "L4x";
+      var h2 = document.querySelector(".hero2 h2");
+      if (h2) h2.innerHTML = "H1<br />H2";
+      var cta = document.querySelector(".btn-arrow");
+      if (cta) cta.textContent = "B2";
+      var cards = document.querySelectorAll("#cards .card");
+      for (var k = 0; k < cards.length; k++) {
+        var btn = cards[k].querySelector(".btn");
+        if (btn) btn.textContent = "BTN";
+      }
     } catch (e) {}
   }
   fillFa();
