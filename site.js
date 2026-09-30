@@ -1,9 +1,9 @@
 /* Home page — render title, photographic cards, theme from store.json */
 (function () {
-  var BTN = "دیدن محصولات";
-  var UNIT = "محصول 🕯️";
+  var BTN = "BTN-TXT";
+  var UNIT = "UNIT-TXT";
   function faNum(n) {
-    return String(n).replace(/[0-9]/g, function (d) { return "۰۱۲۳۴۵۶۷۸۹"[+d]; });
+    return String(n).replace(/[0-9]/g, function (d) { return "0123456789"[+d]; });
   }
   function card(c) {
     var n = (c.items || []).length;
@@ -15,6 +15,7 @@
       : "";
     return '<a class="card" href="category.html?c=' + encodeURIComponent(c.slug) + '">' +
       bg + '<div class="card-veil" aria-hidden="true"></div>' + badge +
+      '<span class="deco tl">D1</span><span class="deco br">D2</span>' +
       '<div class="card-txt"><h2>' + Encanto.esc(c.title) + "</h2><p>" + Encanto.esc(c.desc) + "</p></div>" +
       '<span class="btn">' + BTN + "</span></a>";
   }
@@ -31,13 +32,12 @@
     setText("tagline", site.tagline);
     if (site.brandFa) {
       document.title = site.brandFa + " | " + (site.brandEn || "");
-      var bm = document.querySelector(".brand-mark");
-      if (bm) bm.textContent = "🕯️";
-      var dv = document.querySelector(".divider");
-      if (dv) dv.textContent = "...";
     }
     var cats = store.categories || [];
     var wrap = document.getElementById("cards");
-    if (wrap && cats.length) wrap.innerHTML = cats.map(card).join("");
+    if (wrap && cats.length) {
+      wrap.classList.add("grid5");
+      wrap.innerHTML = cats.map(card).join("");
+    }
   }).catch(function () {});
 })();
