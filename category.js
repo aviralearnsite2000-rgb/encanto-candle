@@ -1,1 +1,1 @@
-placeholder v2 - gallery coming next
+restored gallery fix coming next
