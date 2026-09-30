@@ -4,8 +4,9 @@
   var UNIT = "UNIT-TXT";
   var D1 = "D1";
   var D2 = "D2";
+  var FADIG = "0123456789";
   function faNum(n) {
-    return String(n).replace(/[0-9]/g, function (d) { return "0123456789"[+d]; });
+    return String(n).replace(/[0-9]/g, function (d) { return FADIG[+d]; });
   }
   function card(c) {
     var n = (c.items || []).length;
@@ -25,6 +26,20 @@
     var el = document.getElementById(id);
     if (el && v) el.textContent = v;
   }
+  function fillStatic() {
+    try {
+      var nav = document.querySelectorAll(".nav-links a");
+      if (nav[0]) nav[0].textContent = "L1x";
+      if (nav[1]) nav[1].textContent = "L2x";
+      if (nav[2]) nav[2].textContent = "L3x";
+      if (nav[3]) nav[3].textContent = "L4x";
+      var h2 = document.querySelector(".hero2 h2");
+      if (h2) h2.innerHTML = "H1<br />H2";
+      var cta = document.querySelector(".btn-arrow");
+      if (cta) cta.textContent = "B2";
+    } catch (e) {}
+  }
+  fillStatic();
   Encanto.loadStore().then(function (store) {
     var site = store.site || {};
     Encanto.applyTheme(site);
@@ -32,14 +47,10 @@
     T("brandFa", site.brandFa);
     T("brandEn", site.brandEn);
     T("tagline", site.tagline);
-    if (site.brandFa) {
-      document.title = site.brandFa + " | " + (site.brandEn || "");
-    }
+    if (site.brandFa) { document.title = site.brandFa + " | " + (site.brandEn || ""); }
     var cats = store.categories || [];
     var wrap = document.getElementById("cards");
-    if (wrap && cats.length) {
-      wrap.classList.add("grid5");
-      wrap.innerHTML = cats.map(card).join("");
-    }
+    if (wrap && cats.length) { wrap.classList.add("grid5"); wrap.innerHTML = cats.map(card).join(""); }
+    fillStatic();
   }).catch(function () {});
 })();
