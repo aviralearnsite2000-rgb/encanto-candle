@@ -1,4 +1,4 @@
-/* Home page — render title, photographic cards, theme from store.json (ASCII-safe) */
+/* Home page — render title, photographic cards, theme from store.json */
 (function () {
   var BTN = "BTN-TXT";
   var UNIT = "UNIT-TXT";
@@ -27,16 +27,12 @@
   }
   function fillFa() {
     try {
+      document.title = "TT1-FINAL";
       var nav = document.querySelectorAll(".nav-links a");
-      if (nav[0]) nav[0].textContent = "خانه";
-      if (nav[1]) nav[1].textContent = "محصولات";
-      if (nav[2]) nav[2].textContent = "درباره ما";
-      if (nav[3]) nav[3].textContent = "تماس با ما";
-      var h2 = document.querySelector(".hero2 h2");
-      if (h2) h2.innerHTML = "H1<br />H2";
-      var cta = document.querySelector(".btn-arrow");
-      if (cta) cta.textContent = "B2";
-      document.title = "TT1";
+      if (nav[0]) nav[0].textContent = "L1x";
+      if (nav[1]) nav[1].textContent = "L2x";
+      if (nav[2]) nav[2].textContent = "L3x";
+      if (nav[3]) nav[3].textContent = "L4x";
     } catch (e) {}
   }
   fillFa();
