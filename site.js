@@ -1,7 +1,7 @@
 /* Home page — render title, photographic cards, theme from store.json */
 (function () {
-  var BTN = "BTN-TXT";
-  var UNIT = "UNIT-TXT";
+  var BTN = "BTN-TXT2";
+  var UNIT = "UNIT-TXT2";
   function faNum(n) {
     return String(n).replace(/[0-9]/g, function (d) { return "0123456789"[+d]; });
   }
