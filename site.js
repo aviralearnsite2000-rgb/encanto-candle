@@ -1,14 +1,22 @@
-/* Home page — render title, cards, theme from store.json */
+/* Home page — render title, photographic cards, theme from store.json */
 (function () {
-  function visual(c) {
-    if (c.image) { return '<img src="' + Encanto.esc(c.image) + '" alt="' + Encanto.esc(c.title) + '" loading="lazy">'; }
-    return Encanto.esc(c.icon || "🕯️");
+  var BTN = "دیدن محصولات";
+  var UNIT = "محصول 🕯️";
+  function faNum(n) {
+    return String(n).replace(/[0-9]/g, function (d) { return "۰۱۲۳۴۵۶۷۸۹"[+d]; });
   }
   function card(c) {
+    var n = (c.items || []).length;
+    var bg = c.image
+      ? '<div class="card-bg"><img src="' + Encanto.esc(c.image) + '" alt="" loading="lazy"></div>'
+      : "";
+    var badge = n
+      ? '<span class="card-count">' + faNum(n) + " " + UNIT + "</span>"
+      : "";
     return '<a class="card" href="category.html?c=' + encodeURIComponent(c.slug) + '">' +
-      '<div class="card-icon">' + visual(c) + "</div>" +
+      bg + '<div class="card-veil" aria-hidden="true"></div>' + badge +
       '<div class="card-txt"><h2>' + Encanto.esc(c.title) + "</h2><p>" + Encanto.esc(c.desc) + "</p></div>" +
-      '<span class="btn">دیدن محصولات</span></a>';
+      '<span class="btn">' + BTN + "</span></a>";
   }
   function setText(id, value) {
     var el = document.getElementById(id);
