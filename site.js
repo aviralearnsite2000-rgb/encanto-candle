@@ -29,6 +29,13 @@
     setText("brandFa", site.brandFa);
     setText("brandEn", site.brandEn);
     setText("tagline", site.tagline);
+    if (site.brandFa) {
+      document.title = site.brandFa + " | " + (site.brandEn || "");
+      var bm = document.querySelector(".brand-mark");
+      if (bm) bm.textContent = "🕯️";
+      var dv = document.querySelector(".divider");
+      if (dv) dv.textContent = "...";
+    }
     var cats = store.categories || [];
     var wrap = document.getElementById("cards");
     if (wrap && cats.length) wrap.innerHTML = cats.map(card).join("");
