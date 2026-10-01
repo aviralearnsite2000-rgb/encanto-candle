@@ -1,15 +1,12 @@
-/* Encanto cat playing with yarn — zero-height overlay between hero and cards.
-   Sits on the top edge of the card row; never changes layout (height:0). */
+/* Encanto playful cat - zero-height overlay between hero and cards.
+   The cat sits on the top edge of the card row; layout never changes
+   (wrapper height:0, floating decoration, pointer-events:none so it never
+   covers buttons or cards). Pure ASCII. */
 .cat-play{position:relative;height:0;overflow:visible;z-index:6;pointer-events:none;line-height:0}
-.cat-stage{position:absolute;bottom:-2px;left:50%;transform:translateX(-50%);width:min(300px,30vw);direction:ltr}
-.cat-stage svg{display:block;width:100%;height:auto;overflow:visible}
-.cat-breathe{animation:catBreathe 4s ease-in-out infinite;transform-box:fill-box;transform-origin:50% 100%}
-.cat-tail{animation:catTail 2.2s ease-in-out infinite;transform-box:fill-box;transform-origin:100% 50%}
-.cat-paw{animation:catPaw 2.8s ease-in-out infinite;transform-box:fill-box;transform-origin:50% 0%}
-.yarn-ball{animation:yarnBounce 2.8s ease-in-out infinite}
-@keyframes catBreathe{0%,100%{transform:scale(1,1)}50%{transform:scale(1.015,1.035)}}
-@keyframes catTail{0%,100%{transform:rotate(0deg)}50%{transform:rotate(-14deg)}}
-@keyframes catPaw{0%,52%,100%{transform:rotate(0deg)}60%{transform:rotate(26deg)}72%{transform:rotate(-8deg)}82%{transform:rotate(0deg)}}
-@keyframes yarnBounce{0%,52%,100%{transform:translate(0,0)}62%{transform:translate(12px,-22px)}74%{transform:translate(20px,0)}86%{transform:translate(8px,-7px)}92%{transform:translate(2px,0)}}
-@media (max-width:760px){.cat-stage{width:min(190px,48vw);bottom:-2px}}
-@media (prefers-reduced-motion:reduce){.cat-breathe,.cat-tail,.cat-paw,.yarn-ball{animation:none !important}}
+.cat-stage{position:absolute;bottom:-2px;left:40%;transform:translateX(-50%);width:min(320px,32vw);direction:ltr;pointer-events:none}
+#playful-cat{width:100%;height:auto;display:block;overflow:visible;margin-bottom:-1px}
+#playful-cat .cat-art{fill-rule:evenodd}
+#playful-cat .cat-heart{transform-box:fill-box;transform-origin:50% 100%;animation:cat-heart-float 1.4s cubic-bezier(.2,.7,.3,1) forwards}
+@keyframes cat-heart-float{0%{transform:translate(0,0) scale(.3) rotate(0deg);opacity:0}15%{transform:translate(var(--dx1),-10px) scale(1.05) rotate(var(--r));opacity:1}70%{opacity:1}100%{transform:translate(var(--dx2),-70px) scale(.8) rotate(calc(var(--r) * -1));opacity:0}}
+@media (max-width:760px){.cat-stage{left:50%;width:min(200px,54vw);bottom:0}section#cards{margin-top:56px !important}}
+@media (prefers-reduced-motion:reduce){#playful-cat .cat-heart{animation:none !important;display:none}}
