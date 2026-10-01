@@ -1,1 +1,12 @@
-PLACEHOLDER_catcss
+/* Encanto playful cat — zero-height overlay between hero and cards.
+   Wrapper stays height:0; pointer-events only on the cat itself.
+   Pure ASCII. */
+.cat-play{position:relative;height:0;overflow:visible;z-index:6;pointer-events:none;line-height:0}
+@media (min-width:761px){.cat-play{position:static}.cat-stage{left:130px !important;transform:translateX(-50%) !important;bottom:6px !important;top:auto !important;z-index:6}}
+.cat-stage{position:absolute;bottom:-4px;left:50%;transform:translateX(-50%);width:clamp(170px,24vw,230px);direction:ltr;pointer-events:none}
+#playful-cat{--cat-outline:#761363;width:100%;height:auto;display:block;overflow:visible;margin-bottom:-1px;pointer-events:auto;cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+#playful-cat .cat-art{fill-rule:evenodd}
+#playful-cat .cat-heart{transform-box:fill-box;transform-origin:50% 100%;animation:cat-heart-float 1.4s cubic-bezier(.2,.7,.3,1) forwards}
+@keyframes cat-heart-float{0%{transform:translate(0,0) scale(.3) rotate(0deg);opacity:0}15%{transform:translate(var(--dx1),-10px) scale(1.05) rotate(var(--r));opacity:1}70%{opacity:1}100%{transform:translate(var(--dx2),-70px) scale(.8) rotate(calc(var(--r) * -1));opacity:0}}
+@media (max-width:760px){.cat-stage{left:calc(43% - 20px);transform:translateX(-50%);width:min(150px,42vw);bottom:57px}.hero2 .btn-arrow{margin-top:58px}section#cards{margin-top:10px !important}}
+@media (prefers-reduced-motion:reduce){#playful-cat .cat-heart{animation:none !important;display:none}}
