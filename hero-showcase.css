@@ -1,0 +1,102 @@
+/* Encanto hero showcase — three gift boxes, floating hearts & sparkles.
+   Sizing is width-driven + object-fit:contain so the composition can NEVER
+   blow out the grid. Transparent background: boxes sit on the site backdrop. */
+.hero-showcase{
+  position:relative;
+  overflow:visible;
+  width:100%;
+  min-width:0;
+  border:none;
+  border-radius:0;
+  box-shadow:none;
+  background:transparent;
+  height:clamp(150px,23vh,225px);
+  min-height:clamp(150px,23vh,225px);
+  max-height:clamp(150px,23vh,225px);
+  display:flex;
+  align-items:stretch;
+  justify-content:center;
+  isolation:isolate;
+}
+/* beat legacy `.hero2 .himg > img` (cover + frame): higher specificity, no frame */
+.hero2 .himg .hero-showcase img{
+  border:none;
+  border-radius:0;
+  box-shadow:none;
+}
+.hero-show-glow{display:none}
+.hero-show-deco{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:visible}
+.hero-deco-item{
+  position:absolute;display:block;pointer-events:none;opacity:0;line-height:0;
+  animation:heroDrift 6s ease-in-out infinite;will-change:transform,opacity;
+}
+.hero-deco-item svg{display:block;width:100%;height:auto;filter:drop-shadow(0 2px 6px rgba(217,106,155,.25))}
+.hero-show-row{
+  position:relative;z-index:2;
+  direction:ltr; /* DOM order = visual left-to-right: white, yellow, pink */
+  display:flex;align-items:stretch;justify-content:center;
+  width:100%;min-width:0;height:100%;max-height:100%;min-height:0;
+  padding:16px 14px 0;overflow:visible;
+}
+.hero-box{
+  position:relative;flex:1 1 0;min-width:0;min-height:0;height:100%;max-height:100%;
+  display:flex;align-items:flex-end;justify-content:center;
+}
+.hero-box + .hero-box{margin-left:clamp(-38px,-4vw,-14px)}
+/* sides tilt outward, mirror-symmetric; center stays straight */
+.hero-box-white{transform:rotate(-6deg)}
+.hero-box-pink{transform:rotate(6deg)}
+.hero-box-center{transform:none}
+.hero-box figure{
+  margin:0;width:100%;min-width:0;height:100%;max-height:100%;min-height:0;
+  display:flex;flex-direction:column;align-items:center;justify-content:flex-end;
+}
+/* width-driven sizing: image can never exceed its column; contain keeps ratio */
+.hero-box figure img{
+  width:100%;max-width:100%;height:100%;max-height:100%;
+  object-fit:contain;object-position:bottom center;display:block;will-change:transform;
+}
+/* center yellow: full height + widest column = prominent; sides slightly shorter */
+.hero-box-white{flex:.96 1 0;z-index:2}
+.hero-box-white figure img{width:96%;height:88%;animation:heroFloatA 4.4s ease-in-out infinite}
+.hero-box-center{flex:1.18 1 0;z-index:3}
+.hero-box-center figure img{width:100%;height:100%;animation:heroFloatB 3.7s ease-in-out infinite}
+.hero-box-pink{flex:1 1 0;z-index:2}
+.hero-box-pink figure img{width:98%;height:90%;animation:heroFloatC 4.9s ease-in-out infinite}
+.hero-shadow{
+  flex:0 0 auto;display:block;width:62%;height:10px;margin-top:0;border-radius:50%;
+  background:radial-gradient(50% 50% at 50% 50%,rgba(176,74,120,.30) 0%,rgba(176,74,120,0) 70%);
+  filter:blur(2px);pointer-events:none;
+}
+.hero-box-center .hero-shadow{width:68%;animation:heroShadowB 3.7s ease-in-out infinite}
+.hero-box-white .hero-shadow{animation:heroShadowA 4.4s ease-in-out infinite}
+.hero-box-pink .hero-shadow{animation:heroShadowC 4.9s ease-in-out infinite}
+@keyframes heroFloatA{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes heroFloatB{0%,100%{transform:translateY(0)}50%{transform:translateY(-11px)}}
+@keyframes heroFloatC{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+@keyframes heroShadowA{0%,100%{transform:scaleX(1);opacity:.9}50%{transform:scaleX(.88);opacity:.6}}
+@keyframes heroShadowB{0%,100%{transform:scaleX(1);opacity:.9}50%{transform:scaleX(.85);opacity:.55}}
+@keyframes heroShadowC{0%,100%{transform:scaleX(1);opacity:.9}50%{transform:scaleX(.9);opacity:.65}}
+@keyframes heroDrift{
+  0%{opacity:0;transform:translateY(10px) scale(.6) rotate(0deg)}
+  18%{opacity:.95}
+  55%{opacity:.8;transform:translateY(-8px) scale(1) rotate(14deg)}
+  80%{opacity:.5}
+  100%{opacity:0;transform:translateY(-18px) scale(.65) rotate(-12deg)}
+}
+@media (max-width:1024px){
+  .hero-show-row{padding:16px 10px 0}
+  .hero-box + .hero-box{margin-left:-22px}
+}
+@media (max-width:760px){
+  .hero-showcase{height:205px;min-height:205px;max-height:205px;border-radius:0}
+  .hero-show-row{padding:14px 8px 0}
+  .hero-box + .hero-box{margin-left:-16px}
+  .hero-box-white{transform:rotate(-4deg)}
+  .hero-box-pink{transform:rotate(4deg)}
+  .hero-shadow{height:8px}
+}
+@media (prefers-reduced-motion:reduce){
+  .hero-box figure img,.hero-shadow,.hero-deco-item{animation:none !important}
+  .hero-deco-item{opacity:.7}
+}
