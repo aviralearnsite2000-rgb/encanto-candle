@@ -88,10 +88,9 @@ body.home .cards.single .card .btn{padding:6px 20px;font-size:.78rem;margin-bott
   .features{padding:4px}
 }
 
-.bottomnav{display:none}
 @media (max-width:760px){
   body.home{overflow-y:auto !important;height:auto;min-height:100vh;min-height:100dvh}
-  body.home .wrap{height:auto;max-height:none;justify-content:flex-start;border-radius:22px;margin:10px auto;width:calc(100% - 20px);overflow:visible;padding-bottom:88px}
+  body.home .wrap{height:auto;max-height:none;justify-content:flex-start;border-radius:22px;margin:10px auto;width:calc(100% - 20px);overflow:visible}
   .topnav{justify-content:space-between}
   .topnav .nav-links{display:none}
   .topnav .nav-acts{display:flex}
@@ -114,8 +113,4 @@ body.home .cards.single .card .btn{padding:6px 20px;font-size:.78rem;margin-bott
   .cards.single .card{min-height:225px;height:auto}
   .features{grid-template-columns:repeat(2,1fr);gap:4px;position:relative;z-index:0}
   .feat:nth-child(3)::before{display:none}
-  .bottomnav{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:100;margin:0;max-width:none;background:rgba(255,255,255,.94);border:none;border-top:1.5px solid rgba(249,174,203,.7);border-radius:18px 18px 0 0;box-shadow:0 -10px 30px rgba(176,74,120,.18);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);padding:8px 6px calc(8px + env(safe-area-inset-bottom))}
-  .bottomnav a{flex:1;min-width:0;text-align:center;font-size:.62rem;color:var(--plum-soft);font-weight:700;white-space:nowrap}
-  .bottomnav a.on{color:var(--rose-deep)}
-  .bottomnav .bi{display:block;font-size:1.2rem;line-height:1.4}
 }
