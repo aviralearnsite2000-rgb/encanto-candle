@@ -1,6 +1,8 @@
-/* Encanto hero showcase — three gift boxes, floating hearts & sparkles.
+/* Encanto hero showcase - three gift boxes, floating hearts & sparkles.
+   Fits inside the existing .hero2 .himg slot. No headings/buttons/text inside.
+   PNGs are true-alpha, shown directly over the pastel gradient.
    Sizing is width-driven + object-fit:contain so the composition can NEVER
-   blow out the grid. Transparent background: boxes sit on the site backdrop. */
+   blow out the grid (images always fit inside the red box). */
 .hero-showcase{
   position:relative;
   overflow:visible;
@@ -85,12 +87,12 @@
   100%{opacity:0;transform:translateY(-18px) scale(.65) rotate(-12deg)}
 }
 @media (max-width:1024px){
-  .hero-show-row{padding:16px 10px 0}
+  .hero-show-row{padding:6px 10px 0}
   .hero-box + .hero-box{margin-left:-22px}
 }
 @media (max-width:760px){
   .hero-showcase{height:205px;min-height:205px;max-height:205px;border-radius:0}
-  .hero-show-row{padding:14px 8px 0}
+  .hero-show-row{padding:4px 8px 0}
   .hero-box + .hero-box{margin-left:-16px}
   .hero-box-white{transform:rotate(-4deg)}
   .hero-box-pink{transform:rotate(4deg)}
