@@ -1,18 +1,18 @@
-/* Scale-only: the wrap is already dead-centered in CSS
-   (left:50% + top:50% + negative margins), so JS only shrinks it
-   to fit the viewport. Center never shifts on wide/tall screens. */
+/* Scale-only: the wrap is centered via translate(-50%,-50%) so the
+   card is always dead-centered (equal left/right gaps) on any screen,
+   and scaled by JS to touch the top and bottom edges of the viewport. */
 (function () {
-  var MOBILE = 760, PADX = 64, PADY = 56;
+  var MOBILE = 760, PADX = 0, PADY = 0; /* بدون پد: کارت دقیقاً از بالا تا پایین صفحه کشیده می‌شود */
   var wrap = document.querySelector('body.home .wrap');
   if (!wrap) return;
   function fit() {
     var vw = window.innerWidth || document.documentElement.clientWidth || 1180;
-    if (vw <= MOBILE) { wrap.style.transform = ''; return; }
+    if (vw <= MOBILE) { wrap.style.transform = 'translate(-50%,-50%)'; return; }
     var vh = window.innerHeight || document.documentElement.clientHeight || 760;
     var s = Math.min((vw - PADX) / 1180, (vh - PADY) / 760);
     if (!(s > 0)) s = 1;
-    if (s > 0.95) s = 0.95;
-    wrap.style.transform = s === 1 ? '' : 'scale(' + s + ')';
+    /* translate وسط‌چین می‌کند، scale اندازه را تنظیم — فاصله چپ و راست همیشه برابر */
+    wrap.style.transform = 'translate(-50%,-50%)' + (s === 1 ? '' : ' scale(' + s + ')');
   }
   if (window.addEventListener) {
     window.addEventListener('resize', fit);
