@@ -146,6 +146,6 @@
       : '<p style="text-align:center;color:var(--plum-soft)">هنوز محصولی ثبت نشده است 🌸</p>';
     initGalleries(grid);
   }).catch(function () {
-    grid.innerHTML = '<p style="text-align:center;color:var(--plum-soft)">خطا در بارگذاری محصولات — لطفاۋ صفحه را رفرش کنید.</p>';
+    grid.innerHTML = '<p style="text-align:center;color:var(--plum-soft)">خطا در بارگذاری محصولات — لطفاً صفحه را رفرش کنید.</p>';
   });
 })();
