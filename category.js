@@ -1,5 +1,5 @@
-/* Category page — renders one category from store.json (?c=slug).
-   Grid is always two columns; multi-photo products become swipe galleries. */
+/* 🕯️ صفحه دسته — محصول‌های یک دسته را از روی store.json رندر می‌کند (?c=slug)
+   گرید همیشه دو ستونه است؛ هر محصول چند عکس داشته باشد گالری سوایپی می‌شود. */
 (function () {
   var slug = new URLSearchParams(location.search).get("c") || "";
   var grid = document.getElementById("products");
@@ -7,7 +7,7 @@
 
   function faNum(n) {
     return String(n).replace(/[0-9]/g, function (d) {
-      return "0123456789"[+d];
+      return "۰۱۲۳۴۵۶۷۸۹"[+d];
     });
   }
 
@@ -17,16 +17,16 @@
     return [];
   }
 
-  /* Gallery: ltr track keeps index math simple; mouse drag + touch swipe + buttons + dots */
+  /* گالری: ترک ltr تا محاسبه ایندکس ساده بماند؛ درگ موس + سوایپ لمسی + دکمه + دات */
   function galleryHTML(p) {
     var list = imgList(p);
     if (!list.length) {
       return '<div class="p-gal single"><div class="p-track"><div class="p-slide"><span style="font-size:4rem">'
-        + Encanto.esc(p.icon || "CANDLE") + "</span></div></div></div>";
+        + Encanto.esc(p.icon || "🕯️") + "</span></div></div></div>";
     }
     var slides = list.map(function (src, i) {
       return '<div class="p-slide"><img src="' + Encanto.esc(src) + '" alt="'
-        + Encanto.esc(p.name) + (list.length > 1 ? " - " + faNum(i + 1) : "")
+        + Encanto.esc(p.name) + (list.length > 1 ? " — " + faNum(i + 1) : "")
         + '" loading="lazy" draggable="false"></div>';
     }).join("");
     var dots = list.length > 1
@@ -35,9 +35,9 @@
         }).join("") + "</div>"
       : "";
     var nav = list.length > 1
-      ? '<button class="p-nav prev" type="button" aria-label="PREV">&#8249;</button>'
-        + '<button class="p-nav next" type="button" aria-label="NEXT">&#8250;</button>'
-        + '<span class="p-count"><b class="cur">' + faNum(1) + "</b> / " + faNum(list.length) + "</span>"
+      ? '<button class="p-nav prev" type="button" aria-label="عکس قبلی">‹</button>'
+        + '<button class="p-nav next" type="button" aria-label="عکس بعدی">›</button>'
+        + '<span class="p-count"><b class="cur">' + faNum(1) + "</b> از " + faNum(list.length) + "</span>"
       : "";
     return '<div class="p-gal" data-gal data-n="' + list.length + '">'
       + '<div class="p-track">' + slides + "</div>" + nav + dots + "</div>";
@@ -49,7 +49,7 @@
       '<div class="p-body"><h3>' + Encanto.esc(p.name) + "</h3>" +
       '<p class="desc">' + Encanto.esc(p.desc) + "</p>" +
       "<div><span class=\"price\">" + Encanto.esc(p.price) + "</span></div>" +
-      '<div class="order-row"><a class="btn" href="' + Encanto.esc(ig) + '" target="_blank" rel="noopener">ORDER</a></div>' +
+      '<div class="order-row"><a class="btn" href="' + Encanto.esc(ig) + '" target="_blank" rel="noopener">سفارش 💌</a></div>' +
       "</div></article>";
   }
 
@@ -76,7 +76,7 @@
         d.addEventListener("click", function (e) { e.stopPropagation(); goTo(gal, i); });
       });
 
-      /* mouse drag + touch swipe (40px threshold) */
+      /* درگ با موس + سوایپ لمسی (آستانه ۴۰ پیکسل) */
       var startX = 0, dx = 0, dragging = false;
       gal.addEventListener("pointerdown", function (e) {
         if (e.target.closest(".p-nav")) return;
@@ -117,35 +117,35 @@
 
     var ig = site.instagram || IG_FALLBACK;
     var mini = document.getElementById("miniBrand");
-    if (mini && site.brandFa) mini.textContent = site.brandFa + " CANDLE";
+    if (mini && site.brandFa) mini.textContent = site.brandFa + " 🕯️";
 
-    /* file:// (double-click): local-server hint */
+    /* بدون سرور (دابل‌کلیک): راهنمای سرور محلی */
     if (location.protocol === "file:") {
-      grid.innerHTML = '<p style="text-align:center;color:var(--plum-soft)">Open with a local server:<br><code dir="ltr">python -m http.server 8000</code></p>';
+      grid.innerHTML = '<p style="text-align:center;color:var(--plum-soft)">برای دیدن محصولات، سایت را با سرور محلی باز کنید:<br><code dir="ltr">python -m http.server 8000</code></p>';
       return;
     }
 
     var cat = (store.categories || []).find(function (c) { return c.slug === slug; });
     if (!cat) {
-      document.getElementById("catTitle").textContent = "NOT-FOUND";
+      document.getElementById("catTitle").textContent = "دسته پیدا نشد 😕";
       grid.innerHTML = "";
       return;
     }
-    document.title = cat.title + " | " + (site.brandFa || "Encanto");
+    document.title = cat.title + " | " + (site.brandFa || "انکنتو");
     var emoji = document.getElementById("catEmoji");
     if (cat.image) {
       emoji.innerHTML = '<img src="' + Encanto.esc(cat.image) + '" alt="" style="width:84px;height:84px;object-fit:cover;border-radius:50%;margin:0 auto">';
     } else {
-      emoji.textContent = cat.icon || "CANDLE";
+      emoji.textContent = cat.icon || "🕯️";
     }
     document.getElementById("catTitle").textContent = cat.title;
     document.getElementById("catDesc").textContent = cat.desc || "";
     var items = cat.items || [];
     grid.innerHTML = items.length
       ? items.map(function (p) { return productCard(p, ig); }).join("")
-      : '<p style="text-align:center;color:var(--plum-soft)">EMPTY</p>';
+      : '<p style="text-align:center;color:var(--plum-soft)">هنوز محصولی ثبت نشده است 🌸</p>';
     initGalleries(grid);
   }).catch(function () {
-    grid.innerHTML = '<p style="text-align:center;color:var(--plum-soft)">LOAD-ERROR</p>';
+    grid.innerHTML = '<p style="text-align:center;color:var(--plum-soft)">خطا در بارگذاری محصولات — لطفاۋ صفحه را رفرش کنید.</p>';
   });
 })();
