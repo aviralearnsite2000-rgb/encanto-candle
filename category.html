@@ -10,6 +10,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Vazirmatn:wght@300;400;500;700;900&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="style.css" />
+<link rel="stylesheet" href="product-modal.css" />
 </head>
 <body>
 
@@ -38,6 +39,23 @@
     <span class="footer-note">سفارش از طریق دایرکت اینستاگرام</span>
     <a class="ig-link" href="https://instagram.com/encanto._candle" target="_blank" rel="noopener">@encanto._candle</a>
   </footer>
+
+  <!-- نمای بزرگ محصول — روی همین صفحه باز می‌شود، صفحه جدیدی در کار نیست -->
+  <div class="pm" id="productModal" role="dialog" aria-modal="true" aria-labelledby="pmTitle" hidden>
+    <div class="pm-backdrop" data-pm-close></div>
+    <div class="pm-box">
+      <div class="pm-media">
+        <button class="pm-back" type="button" data-pm-close>→ بازگشت به محصولات</button>
+        <div class="pm-slot" id="pmSlot"></div>
+      </div>
+      <div class="pm-info">
+        <h2 class="pm-title" id="pmTitle"></h2>
+        <div><span class="price pm-price"></span></div>
+        <p class="pm-desc"></p>
+        <div class="order-row"><a class="btn pm-order" href="#" target="_blank" rel="noopener">سفارش 💌</a></div>
+      </div>
+    </div>
+  </div>
 
 </main>
 
