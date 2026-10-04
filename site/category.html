@@ -1,1 +1,66 @@
-native
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>دسته‌بندی | انکنتو</title>
+<meta name="description" content="محصولات دست‌ساز انکنتو" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='25' font-size='24'>🕯️</text></svg>" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Vazirmatn:wght@300;400;500;700;900&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+<link rel="stylesheet" href="product-modal.css" />
+</head>
+<body>
+
+<div class="bg" aria-hidden="true"></div>
+<div class="bg-veil" aria-hidden="true"></div>
+
+<main class="wrap">
+
+  <nav class="topbar">
+    <a class="home-link" href="index.html">→ بازگشت به خانه</a>
+    <span class="mini-brand" id="miniBrand">انکنتو 🕯️</span>
+  </nav>
+
+  <header class="cat-hero">
+    <div class="cat-emoji" id="catEmoji">🕯️</div>
+    <h1 id="catTitle">…</h1>
+    <p id="catDesc"></p>
+  </header>
+
+  <section class="products" id="products">
+    <p style="text-align:center;color:var(--plum-soft)">در حال بارگذاری… 🌸</p>
+  </section>
+
+  <footer>
+    <a href="index.html">خانه</a> —
+    <span class="footer-note">سفارش از طریق دایرکت اینستاگرام</span>
+    <a class="ig-link" href="https://instagram.com/encanto._candle" target="_blank" rel="noopener">@encanto._candle</a>
+  </footer>
+
+  <!-- نمای بزرگ محصول — روی همین صفحه باز می‌شود، صفحه جدیدی در کار نیست -->
+  <div class="pm" id="productModal" role="dialog" aria-modal="true" aria-labelledby="pmTitle" hidden>
+    <div class="pm-backdrop" data-pm-close></div>
+    <div class="pm-box">
+      <div class="pm-media">
+        <button class="pm-back" type="button" data-pm-close>→ بازگشت به محصولات</button>
+        <div class="pm-slot" id="pmSlot"></div>
+      </div>
+      <div class="pm-info">
+        <h2 class="pm-title" id="pmTitle"></h2>
+        <div><span class="price pm-price"></span></div>
+        <p class="pm-desc"></p>
+        <div class="order-row"><a class="btn pm-order" href="#" target="_blank" rel="noopener">سفارش 💌</a></div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<script src="store.js"></script>
+<script src="category.js"></script>
+
+</body>
+</html>
